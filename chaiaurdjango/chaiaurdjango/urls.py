@@ -28,5 +28,7 @@ urlpatterns = [
     
     #path('chai/', views.all_chai, name='all_chai') chai app urls.py yahan se le jayega 
     path('chai/', include('chai.urls')),
+    
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
