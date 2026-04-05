@@ -5,6 +5,57 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Welcome to the Chai Page</h1>
-    <p>This is the content of the chai page.</p>
+
+<div class="max-w-7xl mx-auto px-4 py-10">
+
+  <!-- Heading -->
+  <h1 class="text-4xl font-bold text-center text-green-700 mb-10">
+    ☕ Welcome to the Chai Page
+  </h1>
+
+  <p class="text-center text-gray-600 mb-8">
+    Explore different types of chai with images and details
+  </p>
+
+  <!-- Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    {% for chai in chais %}
+    <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+
+      <!-- Image -->
+      <img
+        src="{{ chai.image.url }}"
+        alt="{{ chai.name }}"
+        class="w-full h-48 object-cover"
+      />
+
+      <!-- Content -->
+      <div class="p-5">
+
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">
+          {{ chai.name }}
+        </h2>
+
+        <p class="text-gray-500 mb-3">
+          Type: {{ chai.get_type_display }}
+        </p>
+
+        <!-- View Details Button -->
+        <a
+          href="{% url 'chai_detail' chai.id %}"
+          class="block text-center mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+        >
+          View Details
+        </a>
+
+      </div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+</div>
+
 {% endblock %}
